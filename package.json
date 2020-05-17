@@ -1,0 +1,46 @@
+{
+  "name": "vue-cube-contextmenu",
+  "description": "ContextMenu in Vue with accessibility support",
+  "version": "0.1.0",
+  "author": "caojiaquan",
+  "license": "MIT",
+  "private": false,
+  "main": "./dist/vue-contextmenu.min.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js --progress --hide-modules",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.config.js --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caojiaquan/vue-cube-contextmenu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/caojiaquan/vue-cube-contextmenu/issues"
+  },
+  "homepage": "https://github.com/caojiaquan/vue-cube-contextmenu",
+  "keywords": [
+    "vue",
+    "vue-component",
+    "contextmenu",
+    "vue-contextmenu",
+    "rightclick",
+    "右键菜单"
+  ],
+  "dependencies": {
+    "vue": "^2.6.9"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-env": "^1.5.1",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^7.3.1",
+    "vue-loader": "^12.1.0",
+    "vue-template-compiler": "^2.6.9",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
