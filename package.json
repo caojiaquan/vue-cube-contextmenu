@@ -5,7 +5,7 @@
   "author": "caojiaquan",
   "license": "MIT",
   "private": false,
-  "main": "./dist/vue-contextmenu.min.js",
+  "main": "./dist/vue-cube-contextmenu.min.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js --progress --hide-modules",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.config.js --hot"
