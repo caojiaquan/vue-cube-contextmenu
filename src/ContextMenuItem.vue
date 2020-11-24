@@ -1,35 +1,35 @@
 <template>
   <div @click="handleClick" class="context-menu-item">
-    <slot></slot>
+      <slot></slot>
   </div>
 </template>
 
 <script>
-import EventBus from './EventBus'
+import EventBus from './EventBus';
 export default {
-  props: {
-    data: {}
-  },
-  data() {
-    return {
-      attr: {}
+    props: {
+        data: {}
+    },
+    data() {
+        return {
+            attr: {}
+        };
+    },
+    computed: {
+        id() {
+            return this.$parent.id;
+        }
+    },
+    mounted() {
+        EventBus.$on(`${this.id}-set-attributes`, attr => {
+            this.attr = attr;
+        });
+    },
+    methods: {
+        handleClick(e) {
+            this.$emit('on-click', e, this.data, this.attr);
+        }
     }
-  },
-  computed: {
-    id() {
-      return this.$parent.id
-    }
-  },
-  mounted() {
-    EventBus.$on(`${this.id}-set-attributes`, attr => {
-      this.attr = attr
-    })
-  },
-  methods: {
-    handleClick(e) {
-      this.$emit('on-click', e, this.data, this.attr)
-    }
-  }
 }
 </script>
 

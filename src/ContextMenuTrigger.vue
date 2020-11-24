@@ -1,43 +1,46 @@
 <template>
-  <div 
-    @contextmenu.stop="contextmenu"
-    @click="hide">
-    <slot></slot>
+  <div
+      class="context-menu-trigger"
+      @contextmenu.stop="contextmenu"
+      @click="hide">
+          <slot></slot>
   </div>
 </template>
 
 <script>
-import EventBus from './EventBus'
+import EventBus from './EventBus';
 export default {
-  props: {
-    id: {
-      type: String,
-      default: 'ref'
+    props: {
+        id: {
+            type: String,
+            default: 'ref'
+        },
+        attributes: {
+            type: Object,
+            default() {
+                return {};
+            }
+        }
     },
-    attributes: {
-      type: Object,
-      default: function() {
-        return {}
-      }
-    }
-  },
-  data() {
-    return {
-    }
-  },
-  methods: {
-    contextmenu(e) {
-      EventBus.$emit(`${this.id}-show-poptip`, e, this.attributes)
-      this.$emit('on-contextmenu')
+    data() {
+        return {
+        };
     },
+    methods: {
+        contextmenu(e) {
+            EventBus.$emit(`${this.id}-show-poptip`, e, this.attributes);
+            this.$emit('on-contextmenu');
+        },
 
-    hide() {
-      EventBus.$emit(`${this.id}-hide-poptip`, {})
+        hide() {
+            EventBus.$emit(`${this.id}-hide-poptip`, {});
+        }
     }
-  }
-}
+};
 </script>
 
-<style lang="scss">
-  
+<style lang="scss" scoped>
+    .context-menu-trigger {
+        display: inline-block;
+    }
 </style>
