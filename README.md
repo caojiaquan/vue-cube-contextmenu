@@ -3,7 +3,7 @@
 > Contextmenu component for vue
 > 轻量易用的vue版右键菜单，1. 采用发布订阅模式将菜单与触发器解耦，避免多层嵌套数据传递以及通信； 2. 对中间数据进行封装，接入方对数据流通无感知。
 
-[预览地址](./dist/index.html)
+[预览地址](https://caojiaquan.github.io/vue-cube-contextmenu/dist/index.html)
 
 ## Use Setup
 
