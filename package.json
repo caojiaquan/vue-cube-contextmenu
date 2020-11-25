@@ -8,7 +8,8 @@
   "main": "./dist/vue-cube-contextmenu.min.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js --progress --hide-modules",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.config.js --hot"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.config.js --hot",
+    "build:exam": "cross-env NODE_ENV=production webpack --config webpack.exam.config.js --progress --hide-modules"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^7.3.1",
     "vue-loader": "^12.1.0",
