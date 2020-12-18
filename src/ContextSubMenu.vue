@@ -1,4 +1,6 @@
-    
+ /** 
+ * @file 子菜单容器
+ */
 <template>
     <div class="context-submenu" @mouseleave="isShow = false">
         <div class="context-menu-item" @mouseenter="isShow = true">
@@ -6,6 +8,7 @@
             <span :class="`context-submenu-icon context-submenu-icon-${isShow ? 'active': ''}`"></span>
             <div class="context-submenu-content" v-show="isShow">
                 <div class="context-submenu-content-wrap">
+                    <!-- 菜单子项插槽； 内容为ContextMenuItem组件 -->
                     <slot></slot>
                 </div>
             </div>
@@ -14,13 +17,9 @@
 </template>
 
 <script>
-import ContextMenuItem from './ContextMenuItem.vue';
-import EventBus from './EventBus';
 export default {
-    components: {
-        ContextMenuItem
-    },
     props: {
+        // 菜单项label
         title: {
             type: String,
             default: ''
@@ -32,6 +31,8 @@ export default {
         };
     },
     computed: {
+
+        // 菜单groupid
         id() {
             return this.$parent.id;
         }

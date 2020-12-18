@@ -12,20 +12,25 @@ const components = {
     ContextSubMenu
 };
 
-const install = function (Vue) {
-    if (install.installed) {
+/**
+ * 注册组件
+ * @param {Function} Vue 构造函数
+ */
+const installComponent = function (Vue) {
+    if (installComponent.installed) {
         return;
     }
-    Object.keys(components).forEach(key => {
-        Vue.component(key, components[key]);
+    // 注册组件到全局
+    Object.keys(components).forEach(component => {
+        Vue.component(component, components[component]);
     });
 };
 
 // auto install
 if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue);
+    installComponent(window.Vue);
 }
 
 export default {
-    install
+    install: installComponent
 };
