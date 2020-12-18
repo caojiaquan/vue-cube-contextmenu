@@ -1,78 +1,27 @@
 /**
- * @file dev配置
+ * @file prod配置
  */
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+const {merge} = require('webpack-merge');
+const webpackBaseConfig = require('./webpack.base.config.js');
 
-module.exports = {
-    entry: './src/index.js',
+module.exports = merge(webpackBaseConfig, {
+    // 入口
+    entry: './examples/index.js',
+    // 输出
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
         filename: 'vue-cube-contextmenu.min.js',
-        library: 'ContextMenu',
+        library: 'VueCubeContextMenu',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
-    module: {
-        rules: [
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loaders: {
-                    }
-                    // other vue-loader options go here
-                }
-            },
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.(png|jpg|gif|svg)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]?[hash]'
-                }
-            },
-            {
-                test: /\.sass$/,
-                loaders: ['style', 'css', 'sass']
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader'
-            },
-            {
-                test: /\.css$/,
-                loader: 'css-loader'
-            }
-        ]
-    },
     externals: {
-        'vue': 'Vue'
+        vue: 'Vue'
     },
-    resolve: {
-        alias: {
-            vue$: 'vue/lib/vue.esm.js'
-        }
-    },
-    devServer: {
-        historyApiFallback: true,
-        noInfo: true
-    },
-    performance: {
-        hints: false
-    },
-    devtool: '#eval-source-map'
-};
-
-if (process.env.NODE_ENV === 'production') {
-    module.exports.devtool = '#source-map';
-    // http://vue-loader.vuejs.org/en/workflow/production.html
-    module.exports.plugins = (module.exports.plugins || []).concat([
+    plugins: [
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"production"'
@@ -83,9 +32,6 @@ if (process.env.NODE_ENV === 'production') {
             compress: {
                 warnings: false
             }
-        }),
-        new webpack.LoaderOptionsPlugin({
-            minimize: true
         })
-    ]);
-}
+    ]
+});

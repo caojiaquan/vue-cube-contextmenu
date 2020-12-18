@@ -1,5 +1,9 @@
+/**
+ * @file 菜单项组件
+ */
 <template>
   <div @click="handleClick" class="context-menu-item">
+      <!-- 菜单项内容插槽 -->
       <slot></slot>
   </div>
 </template>
@@ -8,29 +12,38 @@
 import EventBus from './EventBus';
 export default {
     props: {
+        // 菜单项自定义数据
         data: {}
     },
     data() {
         return {
+            // 缓存trigger数据
             attr: {}
         };
     },
     computed: {
+        // 菜单groupid，同父级
         id() {
             return this.$parent.id;
         }
     },
     mounted() {
+        // 订阅设置属性动作
         EventBus.$on(`${this.id}-set-attributes`, attr => {
             this.attr = attr;
         });
     },
     methods: {
+
+        /**
+         * 菜单项点击事件处理
+         * @param {Object} e event对象
+         */
         handleClick(e) {
             this.$emit('on-click', e, this.data, this.attr);
         }
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
